@@ -94,9 +94,12 @@ export default async function ArticlePage({
             >
               ← Back to Journal
             </Link>
-            <button className="btn-gradient text-on-primary px-8 py-3 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:opacity-90 transition-all">
+            <Link
+              href="/#booking"
+              className="btn-gradient text-on-primary px-8 py-3 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:opacity-90 transition-all"
+            >
               {article.bookingCta}
-            </button>
+            </Link>
           </div>
         </article>
       </main>

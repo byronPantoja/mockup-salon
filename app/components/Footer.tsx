@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -45,12 +46,21 @@ export default function Footer() {
               { label: "Gift Cards", href: "#" },
             ].map((link) => (
               <li key={link.label}>
-                <a
-                  className="text-on-surface-variant hover:text-primary transition-colors duration-300 font-[family-name:var(--font-body)] text-sm tracking-wide"
-                  href={link.href}
-                >
-                  {link.label}
-                </a>
+                {link.href !== "#" ? (
+                  <Link
+                    className="text-on-surface-variant hover:text-primary transition-colors duration-300 font-[family-name:var(--font-body)] text-sm tracking-wide"
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    className="text-on-surface-variant hover:text-primary transition-colors duration-300 font-[family-name:var(--font-body)] text-sm tracking-wide"
+                    href={link.href}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -90,7 +100,7 @@ export default function Footer() {
       </div>
       <div className="max-w-screen-2xl mx-auto mt-16 md:mt-20 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-on-surface-variant font-[family-name:var(--font-body)] text-sm tracking-wide">
-          © 2024 Serenity Studio. All rights reserved.
+          © {new Date().getFullYear()} Serenity Studio. All rights reserved.
         </p>
         <div className="flex gap-8">
           {["Privacy Policy", "Terms of Service", "Accessibility"].map(
