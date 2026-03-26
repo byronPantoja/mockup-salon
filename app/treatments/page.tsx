@@ -8,6 +8,50 @@ import BookingWidget from "@/app/components/BookingWidget";
 
 const treatments = [
   {
+    slug: "signature-facial",
+    nameLine1: "Signature ",
+    nameLine2: "Facial",
+    category: "60 min · Facial",
+    description:
+      "Our most-loved treatment — a bespoke facial tailored to your skin's needs for lasting clarity and glow.",
+    image: "/images/facial.jpg",
+    bookingName: "Signature Facial",
+    imageLeft: true,
+  },
+  {
+    slug: "stone-therapy",
+    nameLine1: "Stone ",
+    nameLine2: "Therapy",
+    category: "90 min · Body",
+    description:
+      "Heated basalt stones melt tension from the body while grounding the nervous system into deep rest.",
+    image: "/images/stone.jpg",
+    bookingName: "Stone Therapy",
+    imageLeft: false,
+  },
+  {
+    slug: "aromatherapy",
+    nameLine1: "Aroma",
+    nameLine2: "therapy",
+    category: "60 min · Wellness",
+    description:
+      "A full-body ritual using essential oil blends to restore balance and invite stillness.",
+    image: "/images/aromatherapy.jpg",
+    bookingName: "Aromatherapy",
+    imageLeft: true,
+  },
+  {
+    slug: "manicure-pedi",
+    nameLine1: "Manicure ",
+    nameLine2: "& Pedi",
+    category: "75 min · Nail Studio",
+    description:
+      "A luxurious hand and foot ritual with a cuticle treatment, shape, and long-lasting finish.",
+    image: "/images/manicure.jpg",
+    bookingName: "Manicure & Pedi",
+    imageLeft: false,
+  },
+  {
     slug: "sculpt-lift-facial",
     nameLine1: "Sculpt & Lift ",
     nameLine2: "Facial",
@@ -39,17 +83,6 @@ const treatments = [
     image: "/images/stone.jpg",
     bookingName: "Infrared Detox",
     imageLeft: true,
-  },
-  {
-    slug: "manicure-pedi",
-    nameLine1: "Manicure ",
-    nameLine2: "& Pedi",
-    category: "75 min · Nail Studio",
-    description:
-      "A luxurious hand and foot ritual with a cuticle treatment, shape, and long-lasting finish.",
-    image: "/images/manicure.jpg",
-    bookingName: "Manicure & Pedi",
-    imageLeft: false,
   },
 ];
 
