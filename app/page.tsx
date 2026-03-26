@@ -667,6 +667,17 @@ function BookingSection() {
 }
 
 function ContactSection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <section className="py-20 md:py-32 bg-surface" id="contact">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
@@ -698,7 +709,7 @@ function ContactSection() {
           </div>
         </div>
         <div className="bg-surface-container-low p-8 md:p-12 rounded-sm ghost-border">
-          <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
               <label className="block font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant mb-4">
                 Full Name
@@ -707,6 +718,9 @@ function ContactSection() {
                 className="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 focus:outline-none px-0 pb-4 transition-all placeholder:text-outline-variant"
                 placeholder="Your name"
                 type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
@@ -717,6 +731,22 @@ function ContactSection() {
                 className="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 focus:outline-none px-0 pb-4 transition-all placeholder:text-outline-variant"
                 placeholder="email@example.com"
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant mb-4">
+                Subject
+              </label>
+              <input
+                className="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 focus:outline-none px-0 pb-4 transition-all placeholder:text-outline-variant"
+                placeholder="How can we help?"
+                type="text"
+                required
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
               />
             </div>
             <div>
@@ -725,12 +755,15 @@ function ContactSection() {
               </label>
               <textarea
                 className="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 focus:outline-none px-0 pb-4 transition-all placeholder:text-outline-variant resize-none"
-                placeholder="How can we help?"
+                placeholder="Tell us more…"
                 rows={4}
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </div>
             <button
-              className="font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.2em] uppercase text-primary border border-primary/40 px-10 py-5 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-500"
+              className="btn-gradient text-on-primary px-10 py-5 rounded-full font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-all duration-500"
               type="submit"
             >
               Send Inquiry
