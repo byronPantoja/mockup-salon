@@ -751,6 +751,7 @@ function ContactSection() {
                 {email} shortly.
               </p>
               <button
+                type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.2em] uppercase text-primary border border-primary/40 px-10 py-4 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-500"
               >
