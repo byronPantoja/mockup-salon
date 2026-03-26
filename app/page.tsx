@@ -709,6 +709,55 @@ function ContactSection() {
           </div>
         </div>
         <div className="bg-surface-container-low p-8 md:p-12 rounded-sm ghost-border">
+          {submitted ? (
+            <div className="text-center animate-fade-in">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                <span
+                  className="material-symbols-outlined text-primary text-4xl"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_circle
+                </span>
+              </div>
+              <h3 className="font-[family-name:var(--font-headline)] text-3xl md:text-4xl mb-6">
+                Message Sent!
+              </h3>
+              <div className="bg-surface-container rounded-xl p-6 md:p-8 mb-8 max-w-md mx-auto text-left space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary text-xl">person</span>
+                  <div>
+                    <p className="font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant">From</p>
+                    <p className="font-[family-name:var(--font-body)] text-on-surface font-medium">{name}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary text-xl">topic</span>
+                  <div>
+                    <p className="font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant">Subject</p>
+                    <p className="font-[family-name:var(--font-body)] text-on-surface font-medium">{subject}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary text-xl">mail</span>
+                  <div>
+                    <p className="font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant">Reply To</p>
+                    <p className="font-[family-name:var(--font-body)] text-on-surface font-medium">{email}</p>
+                  </div>
+                </div>
+              </div>
+              <p className="font-[family-name:var(--font-body)] text-on-surface-variant text-sm mb-10 max-w-sm mx-auto leading-relaxed">
+                Thank you, {name}. We&apos;ve received your inquiry regarding{" "}
+                {subject}. A member of the Serenity Studio team will respond to{" "}
+                {email} shortly.
+              </p>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.2em] uppercase text-primary border border-primary/40 px-10 py-4 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-500"
+              >
+                Return to Top
+              </button>
+            </div>
+          ) : (
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
               <label className="block font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant mb-4">
@@ -769,6 +818,7 @@ function ContactSection() {
               Send Inquiry
             </button>
           </form>
+          )}
         </div>
       </div>
     </section>
