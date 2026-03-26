@@ -38,7 +38,7 @@ export default function Navbar() {
             Serenity Studio
           </span>
         </Link>
-        <div className="hidden md:flex gap-10">
+        <div className="hidden lg:flex gap-10">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
@@ -56,13 +56,13 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/#booking"
-            className="hidden md:block btn-gradient text-on-primary px-8 py-3 rounded-full font-[family-name:var(--font-label)] font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all"
+            className="hidden lg:block btn-gradient text-on-primary px-8 py-3 rounded-full font-[family-name:var(--font-label)] font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all"
           >
             Book Session
           </Link>
           <button
             type="button"
-            className={`md:hidden transition-colors duration-500 ${
+            className={`lg:hidden transition-colors duration-500 ${
               scrolled ? "text-primary" : "text-white"
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -75,7 +75,7 @@ export default function Navbar() {
         </div>
       </div>
       {mobileMenuOpen && (
-        <div className="md:hidden bg-surface/95 backdrop-blur-sm border-t border-outline-variant/20 px-6 py-6 flex flex-col gap-6">
+        <div className="lg:hidden bg-surface/95 backdrop-blur-sm border-t border-outline-variant/20 px-6 py-6 flex flex-col gap-6">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
