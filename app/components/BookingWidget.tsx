@@ -13,7 +13,6 @@ export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetPr
   const [selectedTreatment, setSelectedTreatment] = useState(defaultTreatment);
   const [email, setEmail] = useState("");
   const [confirmed, setConfirmed] = useState(false);
-  const [treatmentOpen, setTreatmentOpen] = useState(false);
 
   const prevMonthDays = [28, 29, 30, 31];
   const days = Array.from({ length: 17 }, (_, i) => i + 1);
@@ -45,14 +44,11 @@ export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetPr
     setSelectedDate(6);
     setSelectedTime("11:00 AM");
     setStep(1);
-    setSelectedTreatment(defaultTreatment ?? "");
+    setSelectedTreatment(defaultTreatment);
     setEmail("");
     setConfirmed(false);
   };
 
-  // treatmentOpen is tracked but not used in the inline UI (kept for API compatibility)
-  void treatmentOpen;
-  void setTreatmentOpen;
 
   return (
     <div className="bg-surface rounded-sm editorial-shadow overflow-hidden">
@@ -126,6 +122,7 @@ export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetPr
                   <h3 className="font-[family-name:var(--font-headline)] text-xl">
                     November 2024
                   </h3>
+                  {/* Month navigation — non-functional in mockup */}
                   <div className="flex gap-4">
                     <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
                       chevron_left
