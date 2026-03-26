@@ -40,6 +40,17 @@ const treatments = [
     bookingName: "Infrared Detox",
     imageLeft: true,
   },
+  {
+    slug: "manicure-pedi",
+    nameLine1: "Manicure ",
+    nameLine2: "& Pedi",
+    category: "75 min · Nail Studio",
+    description:
+      "A luxurious hand and foot ritual with a cuticle treatment, shape, and long-lasting finish.",
+    image: "/images/manicure.jpg",
+    bookingName: "Manicure & Pedi",
+    imageLeft: false,
+  },
 ];
 
 export default function TreatmentsPage() {

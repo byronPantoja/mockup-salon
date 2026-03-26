@@ -79,7 +79,7 @@ export default function MembershipPage() {
                   Be the first to know
                 </p>
                 <form
-                  className="flex flex-col sm:flex-row gap-3"
+                  className="flex flex-col gap-3"
                   onSubmit={(e) => {
                     e.preventDefault();
                     setSubmitted(true);
