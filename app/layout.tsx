@@ -16,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "The Editorial Sanctuary | Serenity Studio",
+  title: "Serenity Studio | Wellness Sanctuary",
   description:
     "A luxury wellness sanctuary offering bespoke treatments including signature facials, stone therapy, aromatherapy, and refined nail care. Book your moment of peace today.",
 };
