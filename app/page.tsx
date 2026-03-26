@@ -95,7 +95,7 @@ const services = [
   },
 ];
 
-function ServicesSection() {
+function ServicesSection({ onServiceClick }: { onServiceClick: (title: string) => void }) {
   return (
     <section className="py-20 md:py-32 bg-surface-bright" id="services">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
@@ -113,6 +113,7 @@ function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.title}
+              onClick={() => onServiceClick(service.title)}
               className={`group cursor-pointer ${
                 service.offset ? "lg:mt-12" : ""
               }`}
@@ -266,7 +267,7 @@ function TestimonialsSection() {
   );
 }
 
-function BookingSection() {
+function BookingSection({ selectedTreatment }: { selectedTreatment: string }) {
   return (
     <section className="py-20 md:py-32 bg-surface-container-low" id="booking">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
@@ -310,7 +311,7 @@ function BookingSection() {
             </div>
           </div>
           <div className="lg:col-span-8">
-            <BookingWidget />
+            <BookingWidget key={selectedTreatment} defaultTreatment={selectedTreatment} />
           </div>
         </div>
       </div>
@@ -480,15 +481,22 @@ function ContactSection() {
 
 
 export default function Home() {
+  const [selectedTreatment, setSelectedTreatment] = useState("");
+
+  const handleServiceClick = (title: string) => {
+    setSelectedTreatment(title);
+    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <Navbar />
       <main>
         <HeroSection />
-        <ServicesSection />
+        <ServicesSection onServiceClick={handleServiceClick} />
         <AboutSection />
         <TestimonialsSection />
-        <BookingSection />
+        <BookingSection selectedTreatment={selectedTreatment} />
         <ContactSection />
       </main>
       <Footer />
