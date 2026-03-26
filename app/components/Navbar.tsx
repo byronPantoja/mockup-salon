@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+const NAV_LINKS = [
+  { label: "Treatments", href: "/treatments" },
+  { label: "Journal", href: "/journal" },
+  { label: "Membership", href: "/membership" },
+  { label: "Contact", href: "/#contact" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,12 +39,7 @@ export default function Navbar() {
           </span>
         </Link>
         <div className="hidden md:flex gap-10">
-          {[
-            { label: "Treatments", href: "/treatments" },
-            { label: "Journal", href: "/journal" },
-            { label: "Membership", href: "/membership" },
-            { label: "Contact", href: "/#contact" },
-          ].map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
               className={`font-[family-name:var(--font-headline)] text-lg tracking-tight transition-all duration-500 ${
@@ -54,13 +56,12 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/#booking"
-            className={`hidden md:block btn-gradient text-on-primary px-8 py-3 rounded-full font-[family-name:var(--font-label)] font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all ${
-              !scrolled ? "opacity-90" : ""
-            }`}
+            className="hidden md:block btn-gradient text-on-primary px-8 py-3 rounded-full font-[family-name:var(--font-label)] font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all"
           >
             Book Session
           </Link>
           <button
+            type="button"
             className={`md:hidden transition-colors duration-500 ${
               scrolled ? "text-primary" : "text-white"
             }`}
@@ -75,12 +76,7 @@ export default function Navbar() {
       </div>
       {mobileMenuOpen && (
         <div className="md:hidden bg-surface/95 backdrop-blur-sm border-t border-outline-variant/20 px-6 py-6 flex flex-col gap-6">
-          {[
-            { label: "Treatments", href: "/treatments" },
-            { label: "Journal", href: "/journal" },
-            { label: "Membership", href: "/membership" },
-            { label: "Contact", href: "/#contact" },
-          ].map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
