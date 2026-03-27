@@ -18,20 +18,6 @@ export default function Footer() {
             <br />
             United States
           </div>
-          <div className="flex gap-4">
-            <a
-              className="text-primary hover:text-primary-container transition-all text-sm font-medium"
-              href="#"
-            >
-              Instagram
-            </a>
-            <a
-              className="text-primary hover:text-primary-container transition-all text-sm font-medium"
-              href="#"
-            >
-              Pinterest
-            </a>
-          </div>
         </div>
         {/* Navigation Links */}
         <div className="space-y-6">
@@ -42,8 +28,6 @@ export default function Footer() {
             {[
               { label: "Journal", href: "/journal" },
               { label: "Membership", href: "/membership" },
-              { label: "Sustainability Report", href: "#" },
-              { label: "Gift Cards", href: "#" },
             ].map((link) => (
               <li key={link.label}>
                 {link.href !== "#" ? (
@@ -105,13 +89,13 @@ export default function Footer() {
         <div className="flex gap-8">
           {["Privacy Policy", "Terms of Service", "Accessibility"].map(
             (link) => (
-              <a
+              <Link
                 key={link}
                 className="text-on-surface-variant hover:text-primary font-[family-name:var(--font-body)] text-sm tracking-wide transition-colors"
-                href="#"
+                href="/legal"
               >
                 {link}
-              </a>
+              </Link>
             )
           )}
         </div>
