@@ -8,15 +8,61 @@ interface BookingWidgetProps {
 }
 
 export default function BookingWidget({ defaultTreatment = "", compact = false }: BookingWidgetProps) {
-  const [selectedDate, setSelectedDate] = useState(6);
+  const now = new Date();
+  const [calMonth, setCalMonth] = useState<{ year: number; month: number }>({
+    year: now.getFullYear(),
+    month: now.getMonth(),
+  });
+  const [selectedDate, setSelectedDate] = useState(1);
   const [selectedTime, setSelectedTime] = useState("11:00 AM");
   const [step, setStep] = useState<1 | 2>(1);
   const [selectedTreatment, setSelectedTreatment] = useState(defaultTreatment);
   const [email, setEmail] = useState("");
   const [confirmed, setConfirmed] = useState(false);
 
-  const prevMonthDays = [28, 29, 30, 31];
-  const days = Array.from({ length: 17 }, (_, i) => i + 1);
+  const MONTH_NAMES = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December",
+  ];
+  const SHORT_MONTHS = [
+    "Jan","Feb","Mar","Apr","May","Jun",
+    "Jul","Aug","Sep","Oct","Nov","Dec",
+  ];
+  const DAY_NAMES = [
+    "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",
+  ];
+
+  const firstDayOfWeek = new Date(calMonth.year, calMonth.month, 1).getDay();
+  const daysInMonth = new Date(calMonth.year, calMonth.month + 1, 0).getDate();
+  const prevMonthLastDay = new Date(calMonth.year, calMonth.month, 0).getDate();
+  const prevMonthDays = Array.from(
+    { length: firstDayOfWeek },
+    (_, i) => prevMonthLastDay - firstDayOfWeek + 1 + i
+  );
+  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+
+  const monthHeader = `${MONTH_NAMES[calMonth.month]} ${calMonth.year}`;
+  const shortMonth = SHORT_MONTHS[calMonth.month];
+  const selectedDayName = DAY_NAMES[
+    new Date(calMonth.year, calMonth.month, selectedDate).getDay()
+  ];
+
+  const goToPrevMonth = () => {
+    setCalMonth((prev) =>
+      prev.month === 0
+        ? { year: prev.year - 1, month: 11 }
+        : { year: prev.year, month: prev.month - 1 }
+    );
+    setSelectedDate(1);
+  };
+  const goToNextMonth = () => {
+    setCalMonth((prev) =>
+      prev.month === 11
+        ? { year: prev.year + 1, month: 0 }
+        : { year: prev.year, month: prev.month + 1 }
+    );
+    setSelectedDate(1);
+  };
 
   const timeSlots = [
     "09:30 AM",
@@ -42,7 +88,7 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
   };
 
   const handleReset = () => {
-    setSelectedDate(6);
+    setSelectedDate(1);
     setSelectedTime("11:00 AM");
     setStep(1);
     setSelectedTreatment(defaultTreatment);
@@ -76,7 +122,7 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
                   Date &amp; Time
                 </p>
                 <p className="font-[family-name:var(--font-body)] text-on-surface font-medium">
-                  Wednesday, Nov {selectedDate} at {selectedTime}
+                  {selectedDayName}, {shortMonth} {selectedDate} at {selectedTime}
                 </p>
               </div>
             </div>
@@ -121,14 +167,19 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
               <div className={`p-6 md:p-10 border-b border-surface-container ${compact ? "" : "md:border-r md:border-b-0"}`}>
                 <div className="flex justify-between items-center mb-8">
                   <h3 className="font-[family-name:var(--font-headline)] text-xl">
-                    November 2024
+                    {monthHeader}
                   </h3>
-                  {/* Month navigation — non-functional in mockup */}
                   <div className="flex gap-4">
-                    <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
+                    <button
+                      onClick={goToPrevMonth}
+                      className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                    >
                       chevron_left
                     </button>
-                    <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
+                    <button
+                      onClick={goToNextMonth}
+                      className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                    >
                       chevron_right
                     </button>
                   </div>
@@ -167,7 +218,7 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
                   Availability
                 </h3>
                 <p className="font-[family-name:var(--font-label)] text-xs text-on-surface-variant uppercase tracking-widest mb-8">
-                  Wednesday, Nov {selectedDate}
+                  {selectedDayName}, {shortMonth} {selectedDate}
                 </p>
                 <div className="space-y-3 flex-grow overflow-y-auto max-h-[300px] pr-2">
                   {timeSlots.map((time) => (
@@ -243,7 +294,7 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
                   Your Details
                 </h3>
                 <p className="font-[family-name:var(--font-label)] text-xs text-on-surface-variant uppercase tracking-widest mb-8">
-                  Nov {selectedDate} · {selectedTime}
+                  {shortMonth} {selectedDate} · {selectedTime}
                 </p>
 
                 <div className="mb-6">
@@ -266,7 +317,7 @@ export default function BookingWidget({ defaultTreatment = "", compact = false }
                   </p>
                   <div className="flex justify-between text-sm font-[family-name:var(--font-body)]">
                     <span className="text-on-surface-variant">Date</span>
-                    <span className="text-on-surface font-medium">Nov {selectedDate}</span>
+                    <span className="text-on-surface font-medium">{shortMonth} {selectedDate}</span>
                   </div>
                   <div className="flex justify-between text-sm font-[family-name:var(--font-body)]">
                     <span className="text-on-surface-variant">Time</span>
