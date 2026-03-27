@@ -67,7 +67,12 @@ export default function Footer() {
           </ul>
         </div>
         {/* Map Placeholder */}
-        <div className="h-48 bg-surface-container rounded-sm relative overflow-hidden group">
+        <a
+          href="https://maps.google.com/?q=124+Serenity+Lane,+West+Hollywood,+CA+90069"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="h-48 bg-surface-container rounded-sm relative overflow-hidden group block cursor-pointer"
+        >
           <Image
             className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
             src="/images/map.jpg"
@@ -80,7 +85,7 @@ export default function Footer() {
               View Map
             </div>
           </div>
-        </div>
+        </a>
       </div>
       <div className="max-w-screen-2xl mx-auto mt-16 md:mt-20 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-on-surface-variant font-[family-name:var(--font-body)] text-sm tracking-wide">
