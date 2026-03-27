@@ -58,7 +58,7 @@ const treatments = [
     category: "60 min · Facial",
     description:
       "A 60-minute manual lifting massage using lymphatic drainage and microcurrent technology.",
-    image: "/images/facial.jpg",
+    image: "/images/facial-lift.jpg",
     bookingName: "Sculpt & Lift Facial",
     imageLeft: true,
   },
@@ -69,7 +69,7 @@ const treatments = [
     category: "90 min · Glow Treatment",
     description:
       "Our signature chemical-free peel combined with LED light therapy for instant radiance.",
-    image: "/images/aromatherapy.jpg",
+    image: "/images/serenity-glow.jpg",
     bookingName: "The Serenity Glow",
     imageLeft: false,
   },
@@ -80,7 +80,7 @@ const treatments = [
     category: "60 min · Sauna Suite",
     description:
       "A private sauna suite experience designed to reduce inflammation and boost cellular repair.",
-    image: "/images/stone.jpg",
+    image: "/images/infrared-detox.jpg",
     bookingName: "Infrared Detox",
     imageLeft: true,
   },
