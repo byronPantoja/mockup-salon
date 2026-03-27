@@ -4,9 +4,10 @@ import { useState } from "react";
 
 interface BookingWidgetProps {
   defaultTreatment?: string;
+  compact?: boolean;
 }
 
-export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetProps) {
+export default function BookingWidget({ defaultTreatment = "", compact = false }: BookingWidgetProps) {
   const [selectedDate, setSelectedDate] = useState(6);
   const [selectedTime, setSelectedTime] = useState("11:00 AM");
   const [step, setStep] = useState<1 | 2>(1);
@@ -113,11 +114,11 @@ export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetPr
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className={`grid grid-cols-1 ${compact ? "" : "md:grid-cols-2"}`}>
           {/* Step 1: Calendar + Time */}
           {step === 1 ? (
             <>
-              <div className="p-6 md:p-10 md:border-r border-b md:border-b-0 border-surface-container">
+              <div className={`p-6 md:p-10 border-b border-surface-container ${compact ? "" : "md:border-r md:border-b-0"}`}>
                 <div className="flex justify-between items-center mb-8">
                   <h3 className="font-[family-name:var(--font-headline)] text-xl">
                     November 2024
@@ -203,7 +204,7 @@ export default function BookingWidget({ defaultTreatment = "" }: BookingWidgetPr
           ) : (
             /* Step 2: Treatment + Email */
             <>
-              <div className="p-6 md:p-10 md:border-r border-b md:border-b-0 border-surface-container">
+              <div className={`p-6 md:p-10 border-b border-surface-container ${compact ? "" : "md:border-r md:border-b-0"}`}>
                 <div className="flex items-center gap-3 mb-8">
                   <button
                     onClick={() => setStep(1)}

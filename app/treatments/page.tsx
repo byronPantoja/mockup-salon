@@ -164,6 +164,7 @@ export default function TreatmentsPage() {
                     <div className="mt-8 animate-fade-in">
                       <BookingWidget
                         defaultTreatment={treatment.bookingName}
+                        compact
                       />
                     </div>
                   )}
